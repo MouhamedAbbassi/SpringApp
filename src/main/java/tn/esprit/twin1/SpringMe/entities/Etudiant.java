@@ -1,10 +1,9 @@
-package tn.esprit.twin1.SpringM.entities;
+package tn.esprit.twin1.SpringMe.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
-import java.util.Set;
 
 @Entity
 @Getter
@@ -30,7 +29,8 @@ public class Etudiant {
     private long cin;
     @Column(name = "ecole",nullable = false)
     private String ecole;
-    @Column(name = "dateNaissance",nullable = false)
+    @Column(name = "dateNaissance",nullable = true)
+    @Temporal(TemporalType.DATE)
     private Date dateNaissance;
 
 }

@@ -1,4 +1,4 @@
-package tn.esprit.twin1.SpringM;
+package tn.esprit.twin1.SpringMe;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,9 +1,9 @@
-package tn.esprit.twin1.SpringM.services;
+package tn.esprit.twin1.SpringMe.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tn.esprit.twin1.SpringM.entities.Etudiant;
-import tn.esprit.twin1.SpringM.repositories.EtudiantRepositorie;
+import tn.esprit.twin1.SpringMe.entities.Etudiant;
+import tn.esprit.twin1.SpringMe.repositories.EtudiantRepositorie;
 
 import java.util.List;
 
@@ -24,9 +24,15 @@ public class EtudiantServiceImpl  implements EtudiantService{
 
     }
 
+
     @Override
     public Etudiant findById(long idEtudiant) {
         return etudiantRepositorie.findById(idEtudiant).get();
+    }
+
+    @Override
+    public Etudiant saveEtudiant(Etudiant etudiant) {
+        return etudiantRepositorie.save(etudiant);
 
     }
 }

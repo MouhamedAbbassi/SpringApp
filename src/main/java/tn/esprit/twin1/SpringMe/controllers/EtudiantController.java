@@ -1,11 +1,10 @@
-package tn.esprit.twin1.SpringM.controllers;
-import jakarta.persistence.EntityNotFoundException;
+package tn.esprit.twin1.SpringMe.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import tn.esprit.twin1.SpringM.entities.Etudiant;
-import tn.esprit.twin1.SpringM.services.EtudiantService;
+import tn.esprit.twin1.SpringMe.entities.Etudiant;
+import tn.esprit.twin1.SpringMe.services.EtudiantService;
 
 import java.util.List;
 @RestController
@@ -35,6 +34,12 @@ public class EtudiantController
             // Handle other exceptions with a 500 Internal Server Error
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @RequestMapping(value = "new", method = RequestMethod.POST)
+    public String saveEtudiant(@RequestBody Etudiant etudiant) {
+        etudiantService.saveEtudiant(etudiant);
+        return "redirect:/listEtudiant/" + etudiant.getIdEtudiant();
     }
 
 
