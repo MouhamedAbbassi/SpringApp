@@ -1,4 +1,5 @@
 package tn.esprit.twin1.SpringMe.controllers;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,26 +11,25 @@ import java.util.List;
 @RestController
 @RequestMapping("/etudiant")
 @CrossOrigin(origins = "http://localhost:4200")
-public class EtudiantController
-{
-    @Autowired
-    private EtudiantService etudiantService ;
+@RequiredArgsConstructor
+public class EtudiantController {
+    private final EtudiantService etudiantService;
 
     @GetMapping("/getAll")
-    public ResponseEntity<List<Etudiant>> getAllEtudiant(){
-        List<Etudiant> etudiants=etudiantService.getAllStudents();
+    public ResponseEntity<List<Etudiant>> getAllEtudiant() {
+        List<Etudiant> etudiants = etudiantService.getAllStudents();
         return new ResponseEntity<>(etudiants, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{idEtudiant}")
     public ResponseEntity<String> deleteEtudiantC(@PathVariable long idEtudiant) {
         try {
-           Etudiant etudiant = etudiantService.findById(idEtudiant);
-            if(etudiant !=null){
-            etudiantService.deleteEtudiant(idEtudiant);
-            return new ResponseEntity<>( HttpStatus.OK);
+            Etudiant etudiant = etudiantService.findById(idEtudiant);
+            if (etudiant != null) {
+                etudiantService.deleteEtudiant(idEtudiant);
+                return new ResponseEntity<>(HttpStatus.OK);
             }
-            return new ResponseEntity<>( HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } catch (Exception e) {
             // Handle other exceptions with a 500 Internal Server Error
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -44,6 +44,10 @@ public class EtudiantController
 
 
 
-}
+    @PutMapping
+    public Etudiant updateEtudiant(@RequestBody Etudiant etudiant) {
+        return etudiantService.updateEtudiant(etudiant);
+    }
 
+}
 

@@ -12,4 +12,5 @@ void deleteEtudiant (long idEtudiant);
 Etudiant findById(long idEtudiant);
 Etudiant saveEtudiant(Etudiant etudiant);
 
+Etudiant updateEtudiant(Etudiant etudiant);
 }
