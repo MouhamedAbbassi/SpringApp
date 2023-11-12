@@ -43,10 +43,9 @@ public class EtudiantController {
     }
 
 
-
-    @PutMapping
-    public Etudiant updateEtudiant(@RequestBody Etudiant etudiant) {
-        return etudiantService.updateEtudiant(etudiant);
+    @PutMapping("{idEtudiant}")
+    public Etudiant updateEtudiant(@PathVariable long idEtudiant,@RequestBody Etudiant etudiant) {
+        return etudiantService.updateEtudiant(idEtudiant,etudiant);
     }
 
 }
