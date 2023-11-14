@@ -43,10 +43,14 @@ public class EtudiantController {
     }
 
 
-    @PutMapping("{idEtudiant}")
+    @PutMapping("/update/{idEtudiant}")
     public Etudiant updateEtudiant(@PathVariable long idEtudiant,@RequestBody Etudiant etudiant) {
         return etudiantService.updateEtudiant(idEtudiant,etudiant);
     }
 
+    @GetMapping("/getId/{idEtudiant}")
+    public Etudiant getId(@PathVariable long idEtudiant) {
+        return etudiantService.findById(idEtudiant);
+    }
 }
 
